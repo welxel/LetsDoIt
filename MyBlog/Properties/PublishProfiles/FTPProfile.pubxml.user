@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword />
+    <_PublishTargetUrl>ftp://45.151.250.150/www.furkanbektas.net</_PublishTargetUrl>
+    <History>True|2021-10-21T13:53:51.4477432Z;</History>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="appsettings.Development.json">
+      <publishTime>10/21/2021 12:16:48</publishTime>
+    </File>
+    <File Include="appsettings.json">
+      <publishTime>10/21/2021 12:16:48</publishTime>
+    </File>
+    <File Include="MyBlog.deps.json">
+      <publishTime>10/21/2021 16:52:28</publishTime>
+    </File>
+    <File Include="MyBlog.dll">
+      <publishTime>10/21/2021 16:52:27</publishTime>
+    </File>
+    <File Include="MyBlog.exe">
+      <publishTime>10/21/2021 16:52:27</publishTime>
+    </File>
+    <File Include="MyBlog.pdb">
+      <publishTime>10/21/2021 16:52:27</publishTime>
+    </File>
+    <File Include="MyBlog.runtimeconfig.json">
+      <publishTime>10/21/2021 16:52:28</publishTime>
+    </File>
+    <File Include="MyBlog.Views.dll">
+      <publishTime>10/21/2021 16:52:28</publishTime>
+    </File>
+    <File Include="MyBlog.Views.pdb">
+      <publishTime>10/21/2021 16:52:28</publishTime>
+    </File>
+    <File Include="web.config">
+      <publishTime>10/21/2021 16:52:41</publishTime>
+    </File>
+    <File Include="wwwroot/assets/css/fontawesome-all.min.css">
+      <publishTime>08/30/2019 17:53:02</publishTime>
+    </File>
+    <File Include="wwwroot/assets/css/main.css">
+      <publishTime>08/30/2019 17:53:02</publishTime>
+    </File>
+    <File Include="wwwroot/assets/css/noscript.css">
+      <publishTime>08/30/2019 17:53:02</publishTime>
+    </File>
+    <File Include="wwwroot/assets/js/breakpoints.min.js">
+      <publishTime>08/30/2019 17:53:02</publishTime>
+    </File>
+    <File Include="wwwroot/assets/js/browser.min.js">
+      <publishTime>08/30/2019 17:53:02</publishTime>
+    </File>
+    <File Include="wwwroot/assets/js/jquery.min.js">
+      <publishTime>08/30/2019 17:53:02</publishTime>
+    </File>
+    <File Include="wwwroot/assets/js/main.js">
+      <publishTime>08/30/2019 17:53:02</publishTime>
+    </File>
+    <File Include="wwwroot/assets/sass/base/_page.scss">
+      <publishTime>08/30/2019 17:53:02</publishTime>
+    </File>
+    <File Include="wwwroot/assets/sass/base/_reset.scss">
+      <publishTime>08/30/2019 17:53:02</publishTime>
+    </File>
+    <File Include="wwwroot/assets/sass/base/_typography.scss">
+      <publishTime>08/30/2019 17:53:02</publishTime>
+    </File>
+    <File Include="wwwroot/assets/sass/components/_actions.scss">
+      <publishTime>08/30/2019 17:53:02</publishTime>
+    </File>
+    <File Include="wwwroot/assets/sass/components/_button.scss">
+      <publishTime>08/30/2019 17:53:02</publishTime>
+    </File>
+    <File Include="wwwroot/assets/sass/components/_contact-icons.scss">
+      <publishTime>08/30/2019 17:53:02</publishTime>
+    </File>
+    <File Include="wwwroot/assets/sass/components/_form.scss">
+      <publishTime>08/30/2019 17:53:02</publishTime>
+    </File>
+    <File Include="wwwroot/assets/sass/components/_gallery.scss">
+      <publishTime>08/30/2019 17:53:02</publishTime>
+    </File>
+    <File Include="wwwroot/assets/sass/components/_grid-icons.scss">
+      <publishTime>08/30/2019 17:53:02</publishTime>
+    </File>
+    <File Include="wwwroot/assets/sass/components/_icon.scss">
+      <publishTime>08/30/2019 17:53:02</publishTime>
+    </File>
+    <File Include="wwwroot/assets/sass/components/_icons.scss">
+      <publishTime>08/30/2019 17:53:02</publishTime>
+    </File>
+    <File Include="wwwroot/assets/sass/components/_image.scss">
+      <publishTime>08/30/2019 17:53:02</publishTime>
+    </File>
+    <File Include="wwwroot/assets/sass/components/_list.scss">
+      <publishTime>08/30/2019 17:53:02</publishTime>
+    </File>
+    <File Include="wwwroot/assets/sass/components/_panel-banner.scss">
+      <publishTime>08/30/2019 17:53:02</publishTime>
+    </File>
+    <File Include="wwwroot/assets/sass/components/_panel-spotlight.scss">
+      <publishTime>08/30/2019 17:53:02</publishTime>
+    </File>
+    <File Include="wwwroot/assets/sass/components/_panel.scss">
+      <publishTime>08/30/2019 17:53:02</publishTime>
+    </File>
+    <File Include="wwwroot/assets/sass/components/_table.scss">
+      <publishTime>08/30/2019 17:53:02</publishTime>
+    </File>
+    <File Include="wwwroot/assets/sass/layout/_page-wrapper.scss">
+      <publishTime>08/30/2019 17:53:02</publishTime>
+    </File>
+    <File Include="wwwroot/assets/sass/layout/_wrapper.scss">
+      <publishTime>08/30/2019 17:53:02</publishTime>
+    </File>
+    <File Include="wwwroot/assets/sass/libs/_breakpoints.scss">
+      <publishTime>08/30/2019 17:53:02</publishTime>
+    </File>
+    <File Include="wwwroot/assets/sass/libs/_functions.scss">
+      <publishTime>08/30/2019 17:53:02</publishTime>
+    </File>
+    <File Include="wwwroot/assets/sass/libs/_mixins.scss">
+      <publishTime>08/30/2019 17:53:02</publishTime>
+    </File>
+    <File Include="wwwroot/assets/sass/libs/_vars.scss">
+      <publishTime>08/30/2019 17:53:02</publishTime>
+    </File>
+    <File Include="wwwroot/assets/sass/libs/_vendor.scss">
+      <publishTime>08/30/2019 17:53:02</publishTime>
+    </File>
+    <File Include="wwwroot/assets/sass/main.scss">
+      <publishTime>08/30/2019 17:53:02</publishTime>
+    </File>
+    <File Include="wwwroot/assets/sass/noscript.scss">
+      <publishTime>08/30/2019 17:53:02</publishTime>
+    </File>
+    <File Include="wwwroot/assets/webfonts/fa-brands-400.eot">
+      <publishTime>08/30/2019 17:53:02</publishTime>
+    </File>
+    <File Include="wwwroot/assets/webfonts/fa-brands-400.svg">
+      <publishTime>08/30/2019 17:53:02</publishTime>
+    </File>
+    <File Include="wwwroot/assets/webfonts/fa-brands-400.ttf">
+      <publishTime>08/30/2019 17:53:02</publishTime>
+    </File>
+    <File Include="wwwroot/assets/webfonts/fa-brands-400.woff">
+      <publishTime>08/30/2019 17:53:02</publishTime>
+    </File>
+    <File Include="wwwroot/assets/webfonts/fa-brands-400.woff2">
+      <publishTime>08/30/2019 17:53:02</publishTime>
+    </File>
+    <File Include="wwwroot/assets/webfonts/fa-regular-400.eot">
+      <publishTime>08/30/2019 17:53:02</publishTime>
+    </File>
+    <File Include="wwwroot/assets/webfonts/fa-regular-400.svg">
+      <publishTime>08/30/2019 17:53:02</publishTime>
+    </File>
+    <File Include="wwwroot/assets/webfonts/fa-regular-400.ttf">
+      <publishTime>08/30/2019 17:53:02</publishTime>
+    </File>
+    <File Include="wwwroot/assets/webfonts/fa-regular-400.woff">
+      <publishTime>08/30/2019 17:53:02</publishTime>
+    </File>
+    <File Include="wwwroot/assets/webfonts/fa-regular-400.woff2">
+      <publishTime>08/30/2019 17:53:02</publishTime>
+    </File>
+    <File Include="wwwroot/assets/webfonts/fa-solid-900.eot">
+      <publishTime>08/30/2019 17:53:02</publishTime>
+    </File>
+    <File Include="wwwroot/assets/webfonts/fa-solid-900.svg">
+      <publishTime>08/30/2019 17:53:02</publishTime>
+    </File>
+    <File Include="wwwroot/assets/webfonts/fa-solid-900.ttf">
+      <publishTime>08/30/2019 17:53:02</publishTime>
+    </File>
+    <File Include="wwwroot/assets/webfonts/fa-solid-900.woff">
+      <publishTime>08/30/2019 17:53:02</publishTime>
+    </File>
+    <File Include="wwwroot/assets/webfonts/fa-solid-900.woff2">
+      <publishTime>08/30/2019 17:53:02</publishTime>
+    </File>
+    <File Include="wwwroot/images/bg.jpg">
+      <publishTime>08/30/2019 17:53:02</publishTime>
+    </File>
+    <File Include="wwwroot/images/foto1.jpg">
+      <publishTime>10/21/2021 16:43:51</publishTime>
+    </File>
+    <File Include="wwwroot/images/foto2.jpg">
+      <publishTime>10/21/2021 16:44:02</publishTime>
+    </File>
+    <File Include="wwwroot/images/foto3.jpg">
+      <publishTime>10/21/2021 16:44:14</publishTime>
+    </File>
+    <File Include="wwwroot/images/furkan1.jpg">
+      <publishTime>10/21/2021 11:38:25</publishTime>
+    </File>
+    <File Include="wwwroot/images/furkan10.jpg">
+      <publishTime>10/21/2021 12:05:09</publishTime>
+    </File>
+    <File Include="wwwroot/images/furkan11.jpg">
+      <publishTime>10/21/2021 12:05:25</publishTime>
+    </File>
+    <File Include="wwwroot/images/furkan12.jpg">
+      <publishTime>10/21/2021 12:05:36</publishTime>
+    </File>
+    <File Include="wwwroot/images/furkan13.jpg">
+      <publishTime>10/21/2021 12:05:49</publishTime>
+    </File>
+    <File Include="wwwroot/images/furkan2.jpg">
+      <publishTime>10/21/2021 11:45:13</publishTime>
+    </File>
+    <File Include="wwwroot/images/furkan3.jpg">
+      <publishTime>10/21/2021 12:03:41</publishTime>
+    </File>
+    <File Include="wwwroot/images/furkan4.jpg">
+      <publishTime>10/21/2021 12:03:58</publishTime>
+    </File>
+    <File Include="wwwroot/images/furkan5.jpg">
+      <publishTime>10/21/2021 12:04:10</publishTime>
+    </File>
+    <File Include="wwwroot/images/furkan6.jpg">
+      <publishTime>10/21/2021 12:04:23</publishTime>
+    </File>
+    <File Include="wwwroot/images/furkan7.jpg">
+      <publishTime>10/21/2021 12:04:37</publishTime>
+    </File>
+    <File Include="wwwroot/images/furkan8.jpg">
+      <publishTime>10/21/2021 12:04:49</publishTime>
+    </File>
+    <File Include="wwwroot/images/furkan9.jpg">
+      <publishTime>10/21/2021 12:05:00</publishTime>
+    </File>
+    <File Include="wwwroot/images/gallery/fulls/01.jpg">
+      <publishTime>08/30/2019 17:53:02</publishTime>
+    </File>
+    <File Include="wwwroot/images/gallery/fulls/02.jpg">
+      <publishTime>08/30/2019 17:53:02</publishTime>
+    </File>
+    <File Include="wwwroot/images/gallery/fulls/03.jpg">
+      <publishTime>08/30/2019 17:53:02</publishTime>
+    </File>
+    <File Include="wwwroot/images/gallery/fulls/04.jpg">
+      <publishTime>08/30/2019 17:53:02</publishTime>
+    </File>
+    <File Include="wwwroot/images/gallery/fulls/05.jpg">
+      <publishTime>08/30/2019 17:53:02</publishTime>
+    </File>
+    <File Include="wwwroot/images/gallery/fulls/06.jpg">
+      <publishTime>08/30/2019 17:53:02</publishTime>
+    </File>
+    <File Include="wwwroot/images/gallery/fulls/07.jpg">
+      <publishTime>08/30/2019 17:53:02</publishTime>
+    </File>
+    <File Include="wwwroot/images/gallery/fulls/08.jpg">
+      <publishTime>08/30/2019 17:53:02</publishTime>
+    </File>
+    <File Include="wwwroot/images/gallery/fulls/09.jpg">
+      <publishTime>08/30/2019 17:53:02</publishTime>
+    </File>
+    <File Include="wwwroot/images/gallery/thumbs/01.jpg">
+      <publishTime>08/30/2019 17:53:02</publishTime>
+    </File>
+    <File Include="wwwroot/images/gallery/thumbs/02.jpg">
+      <publishTime>08/30/2019 17:53:02</publishTime>
+    </File>
+    <File Include="wwwroot/images/gallery/thumbs/03.jpg">
+      <publishTime>08/30/2019 17:53:02</publishTime>
+    </File>
+    <File Include="wwwroot/images/gallery/thumbs/04.jpg">
+      <publishTime>08/30/2019 17:53:02</publishTime>
+    </File>
+    <File Include="wwwroot/images/gallery/thumbs/05.jpg">
+      <publishTime>08/30/2019 17:53:02</publishTime>
+    </File>
+    <File Include="wwwroot/images/gallery/thumbs/06.jpg">
+      <publishTime>08/30/2019 17:53:02</publishTime>
+    </File>
+    <File Include="wwwroot/images/gallery/thumbs/07.jpg">
+      <publishTime>08/30/2019 17:53:02</publishTime>
+    </File>
+    <File Include="wwwroot/images/gallery/thumbs/08.jpg">
+      <publishTime>08/30/2019 17:53:02</publishTime>
+    </File>
+    <File Include="wwwroot/images/gallery/thumbs/09.jpg">
+      <publishTime>08/30/2019 17:53:02</publishTime>
+    </File>
+    <File Include="wwwroot/images/overlay.png">
+      <publishTime>08/30/2019 17:53:02</publishTime>
+    </File>
+    <File Include="wwwroot/images/pic01.jpg">
+      <publishTime>08/30/2019 17:53:02</publishTime>
+    </File>
+    <File Include="wwwroot/images/pic02.jpg">
+      <publishTime>08/30/2019 17:53:02</publishTime>
+    </File>
+    <File Include="wwwroot/images/pic03.jpg">
+      <publishTime>08/30/2019 17:53:02</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

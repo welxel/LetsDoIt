@@ -1,0 +1,23 @@
+﻿
+---TO DO LİST--
+
+*. Event güncelleştirme olucak.
+*. İşlem tamamlandığı zaman event değişebilir.
+*. Gruplandırma eklenecek.
+*. Kişiler arası gruplandırmada birbirine bildirim gitmesi yapılacak.
+*. Ana sayfa düzeltilecek.
+*. USerList cache üzerinde tutuluyor. Fakat yeni user eklendiğinde update edildiğinde tazelenmiyor. Bu yüzden yeni kullanıcı gözükmüyor.
+*. Canlı sistemde saat ekleme fonksiyonları çalışmıyor.
+*. Kadın default photosu yok. UserDetaile cinsiyet alanı eklenerek ona göre gelecek bir fotograf konulacak.
+
+
+
+
+
+
+
+
+---Proje Hakkında---
+
+*.Proje mail adresi: letsdoitwebproj@gmail.com
+*.Şifre: jackal333

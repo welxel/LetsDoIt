@@ -1,0 +1,171 @@
+﻿<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <!-- Sidebar user panel (optional) -->
+        @await Component.InvokeAsync("UserInfo")
+
+        <!-- SidebarSearch Form -->
+        <div class="form-inline">
+            <div class="input-group" data-widget="sidebar-search">
+                <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+                <div class="input-group-append">
+                    <button class="btn btn-sidebar">
+                        <i class="fas fa-search fa-fw"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <!-- Add icons to the links using the .nav-icon class
+                with font-awesome or any other icon font library -->
+                <li class="nav-item">
+                    <a asp-controller="UserDetail" asp-action="List" class="nav-link">
+                        <i class="far fa-user"></i>
+                        <p>
+                            Profil Settings
+                            <i class="nav-icon"></i>
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a asp-controller="Todo" asp-action="Index" class="nav-link">
+                        <i class="fas fa-clipboard-list"></i>
+                        <p>
+                            To Do List
+                            <i class="nav-icon"></i>
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a asp-controller="UserList" asp-action="Index" class="nav-link">
+                        <i class="fas fa-user-friends"></i>
+                        <p>
+                            User List
+                            <i class="nav-icon"></i>
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a asp-controller="Contact" asp-action="Index" class="nav-link">
+                        <i class="fas fa-phone"></i>
+                        <p>
+                            Contact Us
+                            <i class="nav-icon"></i>
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a asp-controller="Complaint" asp-action="Index" class="nav-link">
+                        <i class="fas fa-bug"></i>
+                        <p>
+                            Complaints
+                            <i class="nav-icon"></i>
+                        </p>
+                    </a>
+                </li>
+                <div id="FriendList" class="nav-item">
+
+
+
+                </div>
+
+
+
+                @*<li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-chart-pie"></i>
+                            <p>
+                                Charts
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="pages/charts/chartjs.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>ChartJS</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/charts/flot.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Flot</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/charts/inline.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Inline</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/charts/uplot.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>uPlot</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+
+
+                    <li class="nav-header">For Do IT</li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-search"></i>
+                            <p>
+                                Search
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="pages/search/simple.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Simple Search</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="pages/search/enhanced.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Enhanced</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>*@
+
+            </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+</aside>
+<script>
+    getUserFriendList();
+
+
+
+    function getUserFriendList() {
+        var html = '  <a href="#" class="nav-link"><i class="nav-icon fas fa-table"></i><p>Your Friends<i class="fas fa-angle-left right"></i></p></a>';
+        $.ajax({
+            url: "/UserList/FriendList",
+            type: "get",
+            success: function (data, textStatus, jqXHR) {
+                for( var i=0;i<data.length;i++) {
+                    var value = data[i];
+                    html += '<ul class="nav nav-treeview"><li class="nav-item"><a href="pages/tables/simple.html" class="nav-link"><img style="border-bottom-left-radius: 50% 25%;border-bottom-right-radius: 50% 25%;border-top-left-radius: 50% 25%;border-top-right-radius: 50% 25%;" width="50" height="50" src="' + (value.user.userDetail.image == null || value.user.userDetail.image.length==0 ? " /img/defaultProfilPhoto.jpg" : "/" + value.user.userDetail.image) +'">&nbsp;&nbsp;<p>'+value.user.userName+'</p></a></li ></ul >';
+                }                                                                                                                                                                                                                                                                                                        
+                         $("#FriendList").append(html);
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                alert(errorThrown);
+
+            }
+        });
+    }
+</script>

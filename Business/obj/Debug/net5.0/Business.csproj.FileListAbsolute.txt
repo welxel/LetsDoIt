@@ -1,0 +1,12 @@
+C:\Users\dbhsoft\source\repos\LetsDoItWeb\Business\obj\Debug\net5.0\Business.csprojAssemblyReference.cache
+C:\Users\dbhsoft\source\repos\LetsDoItWeb\Business\obj\Debug\net5.0\Business.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\dbhsoft\source\repos\LetsDoItWeb\Business\obj\Debug\net5.0\Business.AssemblyInfoInputs.cache
+C:\Users\dbhsoft\source\repos\LetsDoItWeb\Business\obj\Debug\net5.0\Business.AssemblyInfo.cs
+C:\Users\dbhsoft\source\repos\LetsDoItWeb\Business\obj\Debug\net5.0\Business.csproj.CoreCompileInputs.cache
+C:\Users\dbhsoft\source\repos\LetsDoItWeb\Business\bin\Debug\net5.0\Business.deps.json
+C:\Users\dbhsoft\source\repos\LetsDoItWeb\Business\bin\Debug\net5.0\Business.dll
+C:\Users\dbhsoft\source\repos\LetsDoItWeb\Business\bin\Debug\net5.0\ref\Business.dll
+C:\Users\dbhsoft\source\repos\LetsDoItWeb\Business\bin\Debug\net5.0\Business.pdb
+C:\Users\dbhsoft\source\repos\LetsDoItWeb\Business\obj\Debug\net5.0\Business.dll
+C:\Users\dbhsoft\source\repos\LetsDoItWeb\Business\obj\Debug\net5.0\ref\Business.dll
+C:\Users\dbhsoft\source\repos\LetsDoItWeb\Business\obj\Debug\net5.0\Business.pdb

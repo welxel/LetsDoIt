@@ -1,0 +1,240 @@
+﻿@model UserRegisterViewModel
+@{
+    var abc = ViewBag.message;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Let's Do It</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+
+    <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
+
+    <link rel="stylesheet" href="/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+
+    <link rel="stylesheet" href="/dist/css/adminlte.min.css">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body class="hold-transition register-page">
+    <style>
+        body {
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+        }
+    </style>
+    <div class="register-box">
+        <div class="register-logo">
+            <a href="index.html">
+                <b>Let's</b>
+                <b>Do</b>
+                <b>It</b>
+            </a>
+        </div>
+
+        <div class="card">
+            <div class="card-body register-card-body">
+                <form action="Register" method="post" enctype="multipart/form-data">
+                    @Html.AntiForgeryToken()
+                    <div class="input-group mb-2">
+                        <input asp-for="userRegisterModel.UserName" type="text" class="form-control" placeholder="User Name">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-user"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group mb-2">
+                        <input asp-for="userRegisterModel.Email" type="email" class="form-control" placeholder="Email">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-envelope"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group mb-2">
+                        <input asp-for="userRegisterModel.Jop" type="text" class="form-control" placeholder="Job">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-envelope"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="input-group mb-2">
+                        <input asp-for="userRegisterModel.PhoneNumber" type="tel" class="form-control" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" inputmode="tel">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-phone"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group mb-2">
+                        <input asp-for="userRegisterModel.Description" type="text" class="form-control" placeholder="Description">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-envelope"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="input-group mb-2">
+                        <input asp-for="userRegisterModel.Password" type="password" class="form-control" placeholder="Password">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group mb-2">
+                        <input asp-for="userRegisterModel.ConfirmPassword" type="password" class="form-control" placeholder="Retype password">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group mb-2">
+                        <select asp-for="userRegisterModel.IDCity" class="form-control" placeholder="Your City" onchange="onCityChange(this)">
+                            @foreach (var item in ViewBag.Cities)
+                            {
+
+                <option value="@item.Id">@item.Name</option>
+}
+                        </select>
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-city"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group mb-2">
+                        <select asp-for="userRegisterModel.IDTown" class="form-control" placeholder="Your Town">
+                        </select>
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-city"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="input-group mb-2">
+                        <textarea asp-for="userRegisterModel.Adress" placeholder="Your Adress.." id="inputDescription" class="form-control" rows="4"></textarea>
+                    </div>
+
+                    <div class="input-group mb-2">
+                        <input asp-for="userRegisterModel.InstagramAdress" type="text" class="form-control" placeholder="Your Instagram Adress">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fab fa-instagram"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group mb-2">
+                        <input asp-for="userRegisterModel.TwitterAdress" type="text" class="form-control" placeholder="Your Twitter Adress">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fab fa-twitter"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="input-group mb-2">
+                        <input asp-for="userRegisterModel.BlogAdress" type="text" class="form-control" placeholder="Your Blogger Adress">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="far fa-blogger-b"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="input-group mb-2">
+                        <input asp-for="userRegisterModel.YoutubeAdress" type="text" class="form-control" placeholder="Your Youtube Adress">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="far fa-youtube"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="input-group mb-2">
+                        <div class="custom-file">
+                            <input asp-for="formFile" type="file" class="custom-file-input" id="exampleInputFile">
+                            <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!-- /.col -->
+                        <div class="col-4">
+                            <button type="submit" class="btn btn-primary btn-block">Register</button>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                </form>
+            </div>
+            <!-- /.form-box -->
+        </div><!-- /.card -->
+    </div>
+
+
+    <script src="/plugins/jquery/jquery.min.js"></script>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="/dist/js/adminlte.min.js"></script>
+
+    <script>
+
+        $(document).ready(function () {
+            var message = '@ViewBag.Message';
+            if (message != "") {
+                showError(message);
+            }
+        });
+
+        function showError(message) {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'info',
+                title: message,
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+
+
+
+function onCityChange(selection) {
+        var idCity = selection.options[selection.selectedIndex].value;
+
+
+        var townSelection = $("#userRegisterModel_IDTown")[0];
+        var length = townSelection.options.length;
+        for (i = length - 1; i >= 0; i--) {
+            townSelection.options[i] = null;
+        }
+        $.ajax({
+            url: "/town/get/" + idCity,
+            type: "get",
+            success: function (data, textStatus, jqXHR) {
+                for (var i = 0; i < data.length; i++) {
+                    var opt = document.createElement('option');
+                    opt.value = data[i].id;
+                    opt.innerHTML = data[i].name;
+                    townSelection.appendChild(opt);
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                alert(errorThrown);
+
+            }
+        });
+
+    }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+﻿@{ Layout = "../Shared/_Layout.cshtml"; }
+@model PagedList.Core.IPagedList<ContactModel>
+<div class="content-wrapper" style="min-height: 1299.69px;">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Complanint List</h1>
+                </div>
+
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        @*<div class="card-header">
+                            <h3 class="card-title">DataTable with minimal features &amp; hover style</h3>
+                        </div>*@
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                                <div class="row"><div class="col-sm-12 col-md-6"></div><div class="col-sm-12 col-md-6"></div></div><div class="row">
+                                    <div class="col-sm-12">
+                                        <table id="example2" class="table table-bordered table-hover dataTable dtr-inline" role="grid" aria-describedby="example2_info">
+                                            <thead>
+                                                <tr role="row">
+                                                    <th class="sorting sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">User Name</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Title</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Body</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                @{
+                                                    if (Model == null) {
+                                                        <tr class="odd">
+                                                            <td class="dtr-control sorting_1" tabindex="0">Admin</td>
+                                                            <td>Sıkıntı yok kanka kullanıcıların keyfi yerinde</td>
+                                                            <td>:)</td>
+                                                        </tr>
+
+                                                    } else {
+                                                        foreach (var value in Model) {
+                                                            <tr class="odd">
+                                                                <td class="dtr-control sorting_1" tabindex="0">@value.User.UserName</td>
+                                                                <td>@value.Title</td>
+                                                                <td>@value.Message</td>
+                                                            </tr>
+                                                        }
+                                                    }
+                                                }
+
+
+
+
+
+
+
+
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div><div class="row">
+                                    <div class="col-sm-12 col-md-5">
+                                        <div class="dataTables_info" id="example2_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div>
+                                    </div><div class="col-sm-12 col-md-7">
+                                        <div class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
+                                            <td colspan="3" align="center">
+                                                <pager list="@Model" asp-controller="Complaint" asp-action="Index"/>
+                                            </td>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                    <!-- /.card -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>

@@ -1,0 +1,18 @@
+﻿@model List<TodoModel>
+
+
+@foreach (var item in Model)
+{
+    <div class="external-event" style="background-color:@item.Color; border-color: @item.Color; color: #ffffff; position: relative;" data-todoid="@item.Id">
+        
+        <div class="row">
+            <div class="col-11">
+                @item.Title
+
+            </div>
+            <div class="col-1">
+                <i style="cursor:pointer !important;" class="fas fa-trash text-right todo-delete" data-todoid="@item.Id" onclick="tododelete(@item.Id)"></i>
+            </div>
+        </div>
+    </div>
+}

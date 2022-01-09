@@ -1,0 +1,571 @@
+﻿    @{ Layout = "../Shared/_Layout.cshtml"; }
+
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>To-Do Calendar</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Calendar</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="sticky-top mb-3">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Draggable Events</h4>
+                            </div>
+                            <div class="card-body">
+                                <!-- the events -->
+                                <div id="external-events">
+                                    <div class="checkbox">
+                                        <label for="drop-remove">
+                                            <input type="checkbox" id="drop-remove">
+                                            remove after drop
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Create Event</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="btn-group" style="width: 100%; margin-bottom: 10px;">
+                                    <ul class="fc-color-picker" id="color-chooser">
+                                        <li><a class="text-primary" href="#"><i class="fas fa-square"></i></a></li>
+                                        <li><a class="text-warning" href="#"><i class="fas fa-square"></i></a></li>
+                                        <li><a class="text-success" href="#"><i class="fas fa-square"></i></a></li>
+                                        <li><a class="text-danger" href="#"><i class="fas fa-square"></i></a></li>
+                                        <li><a class="text-muted" href="#"><i class="fas fa-square"></i></a></li>
+                                    </ul>
+                                </div>
+                                <!-- /btn-group -->
+                                <div class="form-group">
+                                    <input id="title" type="text" class="form-control" placeholder="Title">
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-group clearfix">
+                                        <div class="icheck-primary d-inline">
+                                            <input type="checkbox" id="checkBoxUrl">
+                                            <label for="checkBoxUrl">
+                                                Is url
+                                            </label>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <div class="form-group">
+
+                                    <textarea id="description" maxlength="350" class="form-control" placeholder="Description"></textarea>
+                                </div>
+                                <div id="divDateSelect" style="display:none;">
+                                    <div class="form-group">
+                                        <input id="url" type="text" class="form-control" placeholder="url">
+                                    </div>
+                                </div>
+
+                                <div class="input-group">
+                                    <div class="input-group-append">
+                                        <button id="add-new-event" type="button" class="btn btn-primary">Add</button>
+                                    </div>
+                                    <!-- /btn-group -->
+                                </div>
+                                <!-- /input-group -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.col -->
+                <div class="col-md-9">
+                    <div class="card card-primary">
+                        <div class="card-body p-0">
+                            <!-- THE CALENDAR -->
+                            <div id="calendar"></div>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>
+
+
+@section RenderStyle{
+
+    <link rel="stylesheet" href="../plugins/fullcalendar/main.css">
+    <link href="../bootstrap-datetimepicker/css/bootstrap-datetimepicker.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+
+}
+
+    @section RenderScript{
+
+        <script src="../plugins/moment/moment.min.js"></script>
+        <script src="../plugins/fullcalendar/main.js"></script>
+        <script src="../bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+            var calendar;
+            var idUser =@ViewBag.User.Id;
+            const swalWithBootstrapButtons = Swal.mixin({
+                customClass: {
+                    confirmButton: 'btn btn-success',
+                    cancelButton: 'btn btn-danger'
+                },
+                buttonsStyling: false
+            })
+
+
+            function updateTodoEvent(idTodoEvent, date,dateEnd, allDay) {
+
+
+                $.ajax({
+                    url: "/Todo/Event/update",
+                    type: "post",
+                    data: {
+                        "id": idTodoEvent, "strDate": date.toLocaleString("tr-TR"), "allDay": allDay, "strEndDate": dateEnd.toLocaleString("tr-TR")},
+                    success: function (data, textStatus, jqXHR) {
+
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        alert(errorThrown);
+                    }
+                });
+
+
+            }
+
+
+            function AskDialog(title,message,run) {
+
+
+                swalWithBootstrapButtons.fire({
+                    title: title,
+                    text: message,
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Yes',
+                    cancelButtonText: 'No',
+                    reverseButtons: true
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        run();
+                    } else if (
+                        result.dismiss === Swal.DismissReason.cancel
+                    ) {
+                        swalWithBootstrapButtons.fire(
+                            'Cancelled',
+                            'Your imaginary file is safe :)',
+                            'error'
+                        )
+                    }
+                })
+
+            }
+
+            function showMessage(message,isSuccess) {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: isSuccess ? 'success':'warning',
+                    title: message,
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            }
+
+            function getTodoItems(id) {
+                $.ajax({
+                    url: "/Todo/Event/Get/" + id,
+                    type: "get",
+                    success: function (data, textStatus, jqXHR) {
+                        calendar.removeAllEvents();
+                        for (var i = 0; i < data.length; i++) {
+
+                            var date = new Date(data[i].eventDate)
+                            var day = date.getDate();       // yields date
+                            var month = date.getMonth();    // yields month (add one as '.getMonth()' is zero indexed)
+                            var year = date.getFullYear();  // yields year
+                            var hour = date.getHours();     // yields hours
+                            var minute = date.getMinutes(); // yields minutes
+                            var second = date.getSeconds(); // yields seconds
+
+                            date = new Date(year, month, day, hour, minute, second);
+
+
+
+                            dateEnd = new Date(data[i].eventEndDate)
+                            day = dateEnd.getDate();       // yields date
+                            month = dateEnd.getMonth();    // yields month (add one as '.getMonth()' is zero indexed)
+                            year = dateEnd.getFullYear();  // yields year
+                            hour = dateEnd.getHours();     // yields hours
+                            minute = dateEnd.getMinutes(); // yields minutes
+                            second = dateEnd.getSeconds(); // yields seconds
+
+                            dateEnd = new Date(year, month, day, hour, minute, second);
+
+
+
+                            var url = data[i].url;
+
+
+                            calendar.addEvent(
+                                {
+                                    title: data[i].title,
+                                    start: date,
+                                    end: dateEnd,
+                                    backgroundColor: data[i].color,
+                                    borderColor: data[i].color,
+                                    allDay: data[i].allDay,
+                                    idTodoEvent: data[i].id,
+                                    url: url
+
+                                });
+
+                        }
+
+
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        alert(errorThrown);
+                    }
+                });
+            }
+
+            function getTodoList(idUser) {
+                $("#external-events").html('<div class="fa-3x"><i class="fas fa-spinner fa-spin"></i></div>');
+                $.ajax({
+                    url: "/Todo/Get/" + idUser,
+                    type: "get",
+                    dataType: "html",
+                    success: function (data, textStatus, jqXHR) {
+
+                        $("#external-events").html(data);
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        alert(errorThrown);
+
+                    }
+
+                });
+
+            }
+            function showDetail(idTodoEvent) {
+
+                $.ajax({
+                    url: "/Todo/Event/" + idTodoEvent,
+                    type: "get",
+                    success: function (data, textStatus, jqXHR) {
+
+                        if (data.url != null) {
+
+
+                            window.open(data.url, '_blank');
+
+                            return;
+                        }+
+
+
+                            //Swal.fire({
+                            //    title: data.title,
+                            //    icon: 'info',
+                            //    html: data.description,
+                            //    showCloseButton: true,
+                            //    showCancelButton: true,
+                            //    focusConfirm: false,
+                            //    confirmButtonText: 'Ok',
+                            //    denyButtonText: 'Delete'
+                            //})
+                        Swal.fire({
+                            title: data.title,
+                            text: data.description,
+                            icon: 'info',
+                            showCancelButton: true,
+                            confirmButtonColor: '#d33', 
+                            cancelButtonColor: '#3085d6',
+                            confirmButtonText: 'Do you want delete?'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+
+                                $.ajax({
+                                    url: "/Todo/DeleteItem/" + idTodoEvent,
+                                    type: "post",
+                                    success: function (data, textStatus, jqXHR) {
+                                        Swal.fire({
+                                            title: 'Success',
+                                            text: "To do Item Deleted",
+                                            icon: 'success',
+                                            showCancelButton: false,
+                                            confirmButtonColor: '#3085d6',
+                                            confirmButtonText: 'Ok'
+                                        }).then((result) => {
+                                            if (result.isConfirmed) {
+                                                setTimeout(reflesh); 
+                                            }
+                                        })
+                                    //    setTimeout(reflesh, 1900);    
+                                    },
+                                    error: function (jqXHR, textStatus, errorThrown) {
+                                        alert(errorThrown);
+
+                                    }
+                                });
+                            }
+                        })
+
+
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        alert(errorThrown);
+
+                    }
+                });
+
+
+
+            }
+
+            function tododelete(idTodo) {
+                AskDialog('Warning', 'if you delete this todo?', function () {
+
+                    $.ajax({
+                        url: "/Todo/Delete/" + idTodo,
+                        type: "post",
+                        success: function (data, textStatus, jqXHR) {
+                            showMessage('Deleted is success', true);
+                            getTodoList(idUser);
+                            getTodoItems(idUser);
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            alert(errorThrown);
+
+                        }
+                    });
+                });
+            }
+
+            $(function () {
+                $('#checkBoxUrl:checkbox').change(function () {
+                    if ($(this).is(':checked')) {
+                        $("#divDateSelect").show();
+                    } else {
+                        $("#divDateSelect").hide();
+                    }
+                });
+
+
+                /* initialize the external events
+                 -----------------------------------------------------------------*/
+                function ini_events(ele) {
+                    ele.each(function () {
+
+                        // create an Event Object (https://fullcalendar.io/docs/event-object)
+                        // it doesn't need to have a start or end
+                        var eventObject = {
+                            title: $.trim($(this).text()) // use the element's text as the event title
+                        }
+
+                        // store the Event Object in the DOM element so we can get to it later
+                        $(this).data('eventObject', eventObject)
+
+                        // make the event draggable using jQuery UI
+                        $(this).draggable({
+                            zIndex: 1070,
+                            revert: true, // will cause the event to go back to its
+                            revertDuration: 0  //  original position after the drag
+                        })
+
+                    })
+                }
+
+                ini_events($('#external-events div.external-event'))
+
+                /* initialize the calendar
+                 -----------------------------------------------------------------*/
+                //Date for the calendar events (dummy data)
+                var date = new Date()
+                var d = date.getDate(),
+                    m = date.getMonth(),
+                    y = date.getFullYear()
+
+                var Calendar = FullCalendar.Calendar;
+                var Draggable = FullCalendar.Draggable;
+
+                var containerEl = document.getElementById('external-events');
+                var checkbox = document.getElementById('drop-remove');
+                var calendarEl = document.getElementById('calendar');
+
+                // initialize the external events
+                // -----------------------------------------------------------------
+
+                new Draggable(containerEl, {
+                    itemSelector: '.external-event',
+                    eventData: function (eventEl) {
+                        return {
+                            title: eventEl.innerText,
+                            backgroundColor: window.getComputedStyle(eventEl, null).getPropertyValue('background-color'),
+                            borderColor: window.getComputedStyle(eventEl, null).getPropertyValue('background-color'),
+                            textColor: window.getComputedStyle(eventEl, null).getPropertyValue('color'),
+                        };
+                    }
+                });
+
+                calendar = new Calendar(calendarEl, {
+                    headerToolbar: {
+                        left: 'prev,next today',
+                        center: 'title',
+                        right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                    },
+                    themeSystem: 'bootstrap',
+                    //Random default events
+                    events: [
+
+                    ],
+                    editable: true,
+                    droppable: true, 
+                    drop: function (info) {
+                        var idTodo= $(info.draggedEl).data("todoid");
+                        var date = info.dateStr;
+
+                        addEvent({ "idTodo": idTodo, "idUser": idUser, "eventDate": date, "eventEndDate": date,'allDay':info.allDay});
+
+                        // is the "remove after drop" checkbox checked?
+                        if (checkbox.checked) {
+                            // if so, remove the element from the "Draggable Events" list
+                            info.draggedEl.parentNode.removeChild(info.draggedEl);
+                        }
+                    },
+                    eventClick: function (info) {
+                        info.jsEvent.preventDefault(); // don't let the browser navigate
+                        showDetail(info.event.extendedProps.idTodoEvent);
+                    },
+                    eventDrop: function (info) {
+                        var idTodoEvent=info.event.extendedProps.idTodoEvent;
+                        updateTodoEvent(idTodoEvent, info.event.start, info.event.end, info.event.allDay);
+                    },
+                    eventChange: function (info) {
+                        var idTodoEvent = info.event.extendedProps.idTodoEvent;
+                        updateTodoEvent(idTodoEvent, info.event.start, info.event.end, info.event.allDay);
+                    },
+                });
+
+                calendar.render();
+                // $('#calendar').fullCalendar()
+
+                /* ADDING EVENTS */
+                var currColor = '#3c8dbc' //Red by default
+                // Color chooser button
+                $('#color-chooser > li > a').click(function (e) {
+                    e.preventDefault()
+                    // Save color
+                    currColor = $(this).css('color')
+                    // Add color effect to button
+                    $('#add-new-event').css({
+                        'background-color': currColor,
+                        'border-color': currColor
+                    })
+                })
+                $('#add-new-event').click(function (e) {
+                    e.preventDefault()
+                    // Get value and make sure it is not null
+                    var val = $('#title').val();
+                    var description = $('#description').val();
+                    var url = $('#url').val();
+                    if (val.length == 0) {
+                        return
+                    }
+
+
+
+                    // Add draggable funtionality
+                    //ini_events(event)
+
+                    //ajax post
+
+
+                    var newTodo = { "title": val, "description": description, "Url": url, "color": currColor };
+
+
+                    //ajax post
+                    $.ajax({
+                        url: "/Todo/Add",
+                        type: "POST",
+                        data: newTodo,
+                        success: function (data, textStatus, jqXHR) {
+                            getTodoList(idUser);
+                            $('#description').val('');
+                            $('#title').val('');
+                            showMessage('Added is success', true);
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            //alert(errorThrown);
+
+                        }
+                    });
+
+                })
+
+                getTodoList(idUser);
+                getTodoItems(idUser);
+
+                function addEvent(data) {
+                    $.ajax({
+                        url: "/Todo/Event/Add",
+                        type: "post",
+                        data:data,
+                        success: function (data, textStatus, jqXHR) {
+                            getTodoItems(idUser);
+                            showMessage('new todo added',true);
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            alert(errorThrown);
+
+                        }
+                    });
+                }
+            })
+
+            ///ajax olarak datanın orjinal hali dönülürse bu şekilde html' e çevrilerek append edilir.
+            //function getTodoList(idUser) {
+            //    $("#external-events").html('<div class="fa-3x">< i class= "fas fa-spinner fa-spin" ></i ></div>');
+            //    $.ajax({
+            //        url: "/Todo/GetJson/" + idUser,
+            //        type: "get",
+            //        success: function (data, textStatus, jqXHR) {
+            //            for (var i = 0; i < data.length; i++) {
+            //                $("#external-events").append('<div class="external-event" style="background-color:' + data[i].color + '; border-color: data[i].Color; color: #ffffff; position: relative;" data-todoid="' + data[i].id + '" >' + data[i].title+'</div>');
+            //            }
+            //        },
+            //        error: function (jqXHR, textStatus, errorThrown) {
+            //            alert(errorThrown);
+
+            //        }
+            //    });
+            //}
+
+        </script>
+}
+

@@ -1,0 +1,275 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Lets Do It | Just For You</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/plugins/fontawesome-free/css/all.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Tempusdominus Bootstrap 4 -->
+    <link rel="stylesheet" href="~/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="~/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- JQVMap -->
+    <link rel="stylesheet" href="~/plugins/jqvmap/jqvmap.min.css">
+    <link rel="stylesheet" href="~/dist/css/js-snackbar.css" />
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/dist/css/adminlte.min.css">
+
+    <script src="~/plugins/jquery/jquery.min.js"></script>
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="~/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="~/plugins/daterangepicker/daterangepicker.css">
+    <!-- summernote -->
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/plugins/summernote/summernote-bs4.min.css">
+    @RenderSection("RenderStyle", false)
+    @*<style>
+        #snackbar {
+            visibility: hidden; /* Hidden by default. Visible on click */
+            min-width: 250px; /* Set a default minimum width */
+            margin-left: -125px; /* Divide value of min-width by 2 */
+            background-color: #333; /* Black background color */
+            color: #fff; /* White text color */
+            text-align: center; /* Centered text */
+            border-radius: 2px; /* Rounded borders */
+            padding: 16px; /* Padding */
+            position: fixed; /* Sit on top of the screen */
+            z-index: 1; /* Add a z-index if needed */
+            left: 50%; /* Center the snackbar */
+            bottom: 30px; /* 30px from the bottom */
+        }
+
+        /* Show the snackbar when clicking on a button (class added with JavaScript) */
+        #snackbar.show {
+            visibility: visible; /* Show the snackbar */
+            /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+        However, delay the fade out process for 2.5 seconds */
+            -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+            animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        }
+
+        /* Animations to fade the snackbar in and out */
+        -webkit-keyframes fadein {
+        from
+
+        {
+            bottom: 0;
+            opacity: 0;
+        }
+
+        to {
+            bottom: 30px;
+            opacity: 1;
+        }
+
+        }
+
+        keyframes fadein {
+        from
+
+        {
+            bottom: 0;
+            opacity: 0;
+        }
+
+        to {
+            bottom: 30px;
+            opacity: 1;
+        }
+
+        }
+
+        -webkit-keyframes fadeout {
+        from
+
+        {
+            bottom: 30px;
+            opacity: 1;
+        }
+
+        to {
+            bottom: 0;
+            opacity: 0;
+        }
+
+        }
+
+        keyframes fadeout {
+        from
+
+        {
+            bottom: 30px;
+            opacity: 1;
+        }
+
+        to {
+            bottom: 0;
+            opacity: 0;
+        }
+        }
+        </style>*@
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+    <div class="wrapper">
+       
+        @Html.Partial("_NavBar")
+        @Html.Partial("_SideBar")
+
+        @RenderBody()
+
+        <!--<div class="row" style=" z-index: 100 ;width: 30%;   position: fixed;
+                                bottom: 0;
+                                right: 0;">
+            <div class="col-md-12">-->
+        <!-- DIRECT CHAT PRIMARY -->
+        <!--<div class="card card-primary card-outline direct-chat direct-chat-primary">
+            <div class="card-header">
+                <h3 class="card-title">Direct Chat</h3>
+
+                <div class="card-tools">
+                    <span title="3 New Messages" class="badge bg-primary">3</span>
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-tool" title="Contacts" data-widget="chat-pane-toggle">
+                        <i class="fas fa-comments"></i>
+                    </button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>-->
+        <!-- /.card-header -->
+        <!--<div class="card-body">-->
+        <!-- Conversations are loaded here -->
+        <!--<div class="direct-chat-messages">-->
+        <!-- Message. Default to the left -->
+        <!--<div class="direct-chat-msg">
+            <div class="direct-chat-infos clearfix">
+                <span class="direct-chat-name float-left">Alexander Pierce</span>
+                <span class="direct-chat-timestamp float-right">23 Jan 2:00 pm</span>
+            </div>-->
+        <!-- /.direct-chat-infos -->
+        <!--<img class="direct-chat-img" src="../dist/img/user1-128x128.jpg" alt="Message User Image">-->
+        <!-- /.direct-chat-img -->
+        <!--<div class="direct-chat-text">
+            Is this template really for free? That's unbelievable!
+        </div>-->
+        <!-- /.direct-chat-text -->
+        <!--</div>-->
+        <!-- /.direct-chat-msg -->
+        <!-- Message to the right -->
+        <!--<div class="direct-chat-msg right">
+            <div class="direct-chat-infos clearfix">
+                <span class="direct-chat-name float-right">Sarah Bullock</span>
+                <span class="direct-chat-timestamp float-left">23 Jan 2:05 pm</span>
+            </div>-->
+        <!-- /.direct-chat-infos -->
+        <!--<img class="direct-chat-img" src="../dist/img/user3-128x128.jpg" alt="Message User Image">-->
+        <!-- /.direct-chat-img -->
+        <!--<div class="direct-chat-text">
+            You better believe it!
+        </div>-->
+        <!-- /.direct-chat-text -->
+        <!--</div>-->
+        <!-- /.direct-chat-msg -->
+        <!--</div>-->
+        <!--/.direct-chat-messages-->
+        <!-- Contacts are loaded here -->
+        <!--<div class="direct-chat-contacts">
+            <ul class="contacts-list">
+                <li>
+                    <a href="#">
+                        <img class="contacts-list-img" src="../dist/img/user1-128x128.jpg" alt="User Avatar">
+
+                        <div class="contacts-list-info">
+                            <span class="contacts-list-name">
+                                Count Dracula
+                                <small class="contacts-list-date float-right">2/28/2015</small>
+                            </span>
+                            <span class="contacts-list-msg">How have you been? I was...</span>
+                        </div>-->
+        <!-- /.contacts-list-info -->
+        <!--</a>
+        </li>-->
+        <!-- End Contact Item -->
+        <!--</ul>-->
+        <!-- /.contatcts-list -->
+        <!--</div>-->
+        <!-- /.direct-chat-pane -->
+        <!--</div>-->
+        <!-- /.card-body -->
+        <!--<div class="card-footer">
+            <form action="#" method="post">
+                <div class="input-group">
+                    <input type="text" name="message" placeholder="Type Message ..." class="form-control">
+                    <span class="input-group-append">
+                        <button type="submit" class="btn btn-primary">Send</button>
+                    </span>
+                </div>
+            </form>
+        </div>-->
+        <!-- /.card-footer-->
+        <!--</div>-->
+        <!--/.direct-chat -->
+        <!--</div>-->
+        <!-- /.col -->
+        <!--</div>-->
+        @Html.Partial("_Footer")
+
+
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Control sidebar content goes here -->
+        </aside>
+    </div>
+    <!-- ./wrapper -->
+    <!-- jQuery -->
+    <script src="~/dist/js/js-snackbar.js"></script>
+
+    <!-- jQuery UI 1.11.4 -->
+    <script src="~/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script>$.widget.bridge('uibutton', $.ui.button)</script>
+    <!-- Bootstrap 4 -->
+    <script src="~/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- ChartJS -->
+    <script src="~/plugins/chart.js/Chart.min.js"></script>
+    <!-- Sparkline -->
+    <script src="~/plugins/sparklines/sparkline.js"></script>
+    <!-- JQVMap -->
+    <script src="~/plugins/jqvmap/jquery.vmap.min.js"></script>
+    <script src="~/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+    <!-- jQuery Knob Chart -->
+    <script src="~/plugins/jquery-knob/jquery.knob.min.js"></script>
+    <!-- daterangepicker -->
+    <script src="~/plugins/moment/moment.min.js"></script>
+    <script src="~/plugins/daterangepicker/daterangepicker.js"></script>
+    <!-- Tempusdominus Bootstrap 4 -->
+    <script src="~/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+    <!-- Summernote -->
+    <script src="~/plugins/summernote/summernote-bs4.min.js"></script>
+<!-- overlayScrollbars -->
+    <script src="~/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/dist/js/adminlte.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="~/dist/js/demo.js"></script>
+    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+    <script src="~/dist/js/pages/dashboard.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/3.1.7/signalr.min.js"></script>
+
+
+    @RenderSection("RenderScript", false)
+
+
+
+</body>
+</html>

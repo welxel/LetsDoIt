@@ -1,0 +1,53 @@
+﻿@model UserRegisterViewModel
+
+@{ Layout = "../Shared/_Layout.cshtml"; }
+@Html.Partial("_UserDetailContent")
+
+
+
+@section RenderScript{
+
+    <script>
+
+        function selectElement(id, valueToSelect) {
+            let element = document.getElementById(id);
+            element.value = valueToSelect;
+        }
+        $(document).ready(function () {
+
+            selectElement('userRegisterModel_IDCity', @Model.userRegisterModel.IDCity)
+            onCityChange($("#userRegisterModel_IDCity")[0]);
+
+        });
+        function onCityChange(selection) {
+            var idCity = selection.options[selection.selectedIndex].value;
+
+
+            var townSelection = $("#userRegisterModel_IDTown")[0];
+            var length = townSelection.options.length;
+            for (i = length - 1; i >= 0; i--) {
+                townSelection.options[i] = null;
+            }
+            $.ajax({
+                url: "/town/get/" + idCity,
+                type: "get",
+                success: function (data, textStatus, jqXHR) {
+                    for (var i = 0; i < data.length; i++) {
+                        var opt = document.createElement('option');
+                        opt.value = data[i].id;
+                        opt.innerHTML = data[i].name;
+                        townSelection.appendChild(opt);
+                    }
+                    selectElement('userRegisterModel_IDTown', @Model.userRegisterModel.IDTown)
+
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert(errorThrown);
+
+                }
+            });
+
+        }
+
+    </script>
+}

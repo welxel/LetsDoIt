@@ -1,0 +1,218 @@
+﻿@model UserRegisterViewModel
+@{
+    var isActive = "";
+}
+<div class="content-wrapper" style="min-height: 1602px;">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <h1 class="text-center">Profil Settings</h1>
+        </div>
+    </section>
+    <section class="content">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">Your Account Description</h3>
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div style="text-align:center" class="image fc-center">
+                    <img src="@(@Model.userRegisterModel.Image==null||@Model.userRegisterModel.Image.Length==0?"/img/defaultProfilPhoto.jpg":"/"+@Model.userRegisterModel.Image)" class="img-circle elevation-2" alt="User Image" style="width:30%">
+                </div>
+                <div class="form-group">
+                    <label for="inputName">Your UserName</label>
+                    <input type="text" id="inputName" class="form-control" value="@Model.userRegisterModel.UserName" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="inputName">Your E-Mail</label>
+                    <input type="text" id="inputName" class="form-control" value="@Model.userRegisterModel.Email" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="inputName">Your Jop</label>
+                    <input type="text" id="inputName" class="form-control" value="@Model.userRegisterModel.Jop" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="inputName">Your Phone Number</label>
+                    <input type="text" id="inputName" class="form-control" value="@Model.userRegisterModel.PhoneNumber" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="inputName">Your Description</label>
+                    <input type="text" id="inputName" class="form-control" value="@Model.userRegisterModel.Description" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="inputName">Your City</label>
+                    <input type="text" id="inputName" class="form-control" value="@Model.userRegisterModel.City" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="inputName">Your Town</label>
+                    <input type="text" id="inputName" class="form-control" value="@Model.userRegisterModel.Town" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="inputDescription">Your Adress</label>
+                    <textarea id="inputDescription" class="form-control" rows="4" disabled>@Model.userRegisterModel.Adress</textarea>
+                </div>
+                <div class="form-group">
+                    <label for="inputName">Active</label>
+                    @{if (@Model.userRegisterModel.Active)
+                            isActive = "Active";
+                        else
+                            isActive = "Blocked";
+                    }
+                    <input type="text" id="inputName" class="form-control" value="@isActive" disabled>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <section class="content">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">Update Account Description</h3>
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="card-body">
+                <form method="post" autocomplete="off" enctype="multipart/form-data">
+                    @if (TempData["errormessage"] != null)
+                    {
+                        <div class="input-group mb-2">
+                            <div class="alert alert-warning alert-dismissible">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                <h5><i class="icon fas fa-exclamation-triangle"></i> Alert!</h5>
+                                @TempData["errormessage"]
+                            </div>
+                        </div>}
+                    @if (@TempData["succesmessage"] != null)
+                    {
+                        <div class="alert alert-success alert-dismissible">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                            <h5><i class="icon fas fa-check"></i> Success :)</h5>
+                            @TempData["succesmessage"]
+                        </div>
+                    }
+                    <div class="form-group">
+                        <label for="inputName">Your UserName</label>
+                        <input asp-for="userRegisterModel.UserName" type="text" id="inputName" class="form-control" value="@Model.userRegisterModel.UserName">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputName">Your E-Mail</label>
+                        <input asp-for="userRegisterModel.Email" type="text" id="inputName" class="form-control" value="@Model.userRegisterModel.Email">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputName">Your Jop</label>
+                        <input asp-for="userRegisterModel.Jop" type="text" id="inputName" class="form-control" value="@Model.userRegisterModel.Jop">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputName">Your Description</label>
+                        <input asp-for="userRegisterModel.Description" type="text" id="inputName" class="form-control" value="@Model.userRegisterModel.Description">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputName">Your Phone Number</label>
+                        <input asp-for="userRegisterModel.PhoneNumber" type="text" id="inputName" class="form-control" value="@Model.userRegisterModel.PhoneNumber">
+                    </div>
+                    <div class="input-group mb-2">
+                        <select asp-for="userRegisterModel.IDCity" class="form-control" placeholder="Your City" onchange="onCityChange(this)">
+                            @foreach (var item in ViewBag.Cities)
+                            {
+
+                                <option value="@item.Id">@item.Name</option>
+
+                            }
+                        </select>
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-city"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group mb-2">
+                        <select asp-for="userRegisterModel.IDTown" class="form-control" placeholder="Your Town">
+                        </select>
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-city"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputDescription">Your Adress</label>
+                        <textarea asp-for="userRegisterModel.Adress" id="inputDescription" class="form-control" rows="4">@Model.userRegisterModel.Adress</textarea>
+                    </div>
+                    <div class="input-group mb-2">
+                        <div class="custom-file">
+                            <input type="file" name="formFile" id="formFile" />
+                        </div>
+                    </div>
+                    @Html.HiddenFor(model => model.userRegisterModel.Id)
+                    <div class="row">
+                        <div class="col-12">
+                            <input type="submit" value="Save Changes" asp-controller="UserDetail" asp-action="UpdateUserDetail" class="btn btn-success float-right">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">Update Password</h3>
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="card-body">
+                <form method="post">
+                    @if (TempData["errorPasswordmessage"] != null)
+                    {
+                        <div class="input-group mb-2">
+                            <div class="alert alert-warning alert-dismissible">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                <h5><i class="icon fas fa-exclamation-triangle"></i> Alert!</h5>
+                                @TempData["errormessage"]
+                            </div>
+                        </div>}
+                    @if (@TempData["SuccesPasswordMessage"] != null)
+                    {
+                        <div class="alert alert-success alert-dismissible">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                            <h5><i class="icon fas fa-check"></i> Success :)</h5>
+                            @TempData["ErrorPasswordMessage"]
+                        </div>
+                    }
+                    <div class="form-group">
+                        <label for="inputName">Old Password</label>
+                        <input asp-for="@Model.userRegisterModel.OldPassword" type="password" id="inputName" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputName">New Password</label>
+                        <input asp-for="@Model.userRegisterModel.NewPassword" type="password" id="inputName" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputName">Confirm Password</label>
+                        <input asp-for="@Model.userRegisterModel.ConfirmPassword" type="password" id="inputName" class="form-control">
+                    </div>
+                    @Html.HiddenFor(model => model.userRegisterModel.Id)
+                    <div class="row">
+                        <div class="col-12">
+                            <input type="submit" value="Save Changes" asp-action="UpdatePassword" class="btn btn-success float-right">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </section>
+</div>

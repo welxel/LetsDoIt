@@ -1,0 +1,72 @@
+﻿@{ Layout = "../Shared/_Layout.cshtml";
+    var isVisible = ViewBag.isSuccess;
+}
+@model ContactModel
+<div class="content-wrapper" style="min-height: 1602px;">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Contact us</h1>
+             
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Contact us</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+        <form method="post" asp-action="Index" asp-controller="Contact">
+            <!-- Default box -->
+            <div class="card">
+                <div class="card-body row">
+                    <div class="col-5 text-center d-flex align-items-center justify-content-center">
+                        <div class="">
+                            <h2>Lets Do<strong>It</strong></h2>
+                        </div>
+                    </div>
+
+                    <div class="col-7">
+                        <div class="form-group">
+                            <label for="inputSubject">Title</label>
+                            <input type="text" id="inputSubject" asp-for="@Model.Title" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputMessage">Message</label>
+                            <textarea id="inputMessage" class="form-control" asp-for="@Model.Message" rows="4"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-primary" value="Send message">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </section>
+    <!-- /.content -->
+</div>
+
+@section RenderScript{
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+    if (@isVisible) {
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: "başarılı",
+            showConfirmButton: false,
+            timer: 1500
+        });
+    }
+    </script>
+
+}
