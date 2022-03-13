@@ -31,11 +31,12 @@ namespace Business.Services.MobilAppServices
             var result = _userRepositoryBase.GetEntityQuery().Include(x => x.UserDetail).Include(x=>x.City).Include(x=>x.Town).Where(x => x.UserDetail.Email == email && x.Password == password)
                 .Select(x=> new LoginModel() {
             Name=x.UserName,
-            Id=x.Id
+            Id=x.Id,
+            
             }).FirstOrDefault();
             if (result==null)
             {
-                return new ErrorResult<LoginModel>(result);
+                return new ErrorResult<LoginModel>("Kullanıcı bulunamadı.",result);
             }
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_appSettings.Secret);

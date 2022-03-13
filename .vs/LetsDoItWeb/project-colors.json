@@ -1,0 +1,26 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "503d21b0-e040-4b1b-916d-a12ffea985cf": {
+      "ProjectGuid": "503d21b0-e040-4b1b-916d-a12ffea985cf",
+      "DisplayName": "DoItWebApi",
+      "ColorIndex": 0
+    },
+    "95c0c406-620f-42ba-bad1-9ea73d654854": {
+      "ProjectGuid": "95c0c406-620f-42ba-bad1-9ea73d654854",
+      "DisplayName": "LetsDoItWeb",
+      "ColorIndex": 1
+    },
+    "b98bc7f6-ec3e-4257-82f7-72fdf9c5ecdf": {
+      "ProjectGuid": "b98bc7f6-ec3e-4257-82f7-72fdf9c5ecdf",
+      "DisplayName": "Business",
+      "ColorIndex": 2
+    },
+    "4fc52a5a-7a8e-41bb-933d-f50bac8c9607": {
+      "ProjectGuid": "4fc52a5a-7a8e-41bb-933d-f50bac8c9607",
+      "DisplayName": "AppCore",
+      "ColorIndex": 3
+    }
+  },
+  "NextColorIndex": 4
+}

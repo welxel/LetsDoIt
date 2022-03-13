@@ -49,9 +49,8 @@ namespace LetsDoItWeb.Controllers {
                     ViewBag.message = "Your account is block";
                     return View();
                 }
-                var loginedUser = _sessionHelper.getCurrentUser();
                 _sessionHelper.setSession(account);
-                loginedUser = _sessionHelper.getCurrentUser();
+               var loginedUser = _sessionHelper.getCurrentUser();
                 ViewBag.user = loginedUser;
                 return RedirectToAction("Index", "Todo");
             }

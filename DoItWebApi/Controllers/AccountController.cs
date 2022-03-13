@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 using DoItWebApi.Attributes;
 
 namespace DoItWebApi.Controllers {
-    [Authorize]
+   // [Authorize] Mobil tarafı ayağa kaldırıldığı zamanda MiddleWare aktif hale getirilecek.
     [ApiController]
     [Route("api/[controller]")]
     public class AccountController : ControllerBase {
@@ -29,25 +29,29 @@ namespace DoItWebApi.Controllers {
 
         [HttpPost("login")]
         [AllowAnonymous]
-        public IActionResult Login(Dictionary<String, String> obj) {
-            String email = "";
-            String password = "";
-            if (!obj.TryGetValue("email", out email)) {
-                return BadRequest(new SuccessResult<String>(data: null, message: "e-mail not be null"));
+        public IActionResult Login(MobilLoginRequest mobilLoginRequest) {
+            if (mobilLoginRequest==null)
+            {
+                return Ok(new ErrorResult<LoginModel>("alanlar boş bırakılamaz")); 
             }
-            if (!obj.TryGetValue("password", out password)) {
-                return BadRequest(new SuccessResult<String>(data: null, message: "password not be null"));
+
+            if (mobilLoginRequest.Email==null || mobilLoginRequest.Email =="") {
+                return Ok(new ErrorResult<LoginModel>(data: null, message: "E-mail alanı boş bırakılamaz."));
             }
-            var result = _loginService.JWTLogin(email, password);
+            if (mobilLoginRequest.Password == null || mobilLoginRequest.Password == "") {
+                return Ok(new ErrorResult<LoginModel>(data: null, message: "Password alanı boş bırakılamaz."));
+            }
+            var result = _loginService.JWTLogin(mobilLoginRequest.Email, mobilLoginRequest.Password);
             if (result.Status == ResultStatus.Exception) {
                 return BadRequest();
             }
 
             if (result.Status == ResultStatus.Error) {
-                return BadRequest(new SuccessResult<LoginModel>(data: result.Data, message: result.Message));
+                return Ok(new ErrorResult<LoginModel>(data: result.Data, message: result.Message));
             }
 
             if (result.Status == ResultStatus.Success) {
+
                 return Ok(new SuccessResult<LoginModel>(data: result.Data, message: result.Message));
             }
 
@@ -86,7 +90,6 @@ namespace DoItWebApi.Controllers {
             }
             return BadRequest(new SuccessResult<IQueryable<CityModel>>(result.Message, result.Data));
         }
--
         [HttpPost("gettown/{idcity}")]
         public IActionResult GetTown(int idCity) {
             var result = _townService.GetByIDCity(idCity);

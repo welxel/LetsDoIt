@@ -17,8 +17,8 @@ namespace DataAccess.EntityFramework.Contexts {
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<UserFriends> UserFriends { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
-            //ConnectionConfig.ConnectionString = "Server=DESKTOP-09H2BRQ;Database=LetsDoIt;Trusted_Connection=True;MultipleActiveResultSets=true";
-            ConnectionConfig.ConnectionString = "Data Source =arya.veridyen.com\\MSSQLSERVER2014; Initial Catalog = LetsDoIt; Persist Security Info = True; User ID =furkan.bektas; Password =Jackal333!";
+            ConnectionConfig.ConnectionString = "Server=DESKTOP-09H2BRQ;Database=LetsDoIt;Trusted_Connection=True;MultipleActiveResultSets=true";
+            //ConnectionConfig.ConnectionString = "Data Source =arya.veridyen.com\\MSSQLSERVER2014; Initial Catalog = LetsDoIt; Persist Security Info = True; User ID =furkan.bektas; Password =Jackal333!";
             optionsBuilder.UseSqlServer(ConnectionConfig.ConnectionString);
         }
 

@@ -83,7 +83,6 @@ namespace LetsDoItWeb.Controllers {
         public IActionResult UpdateEvent(TodoEventModel todoEventModel) {
             todoEventModel.EventDate = DateTime.Parse(todoEventModel.strDate);
             todoEventModel.EventEndDate = DateTime.Parse(todoEventModel.strEndDate);
-
             return Ok(_todoEventService.Update(todoEventModel));
         }
 

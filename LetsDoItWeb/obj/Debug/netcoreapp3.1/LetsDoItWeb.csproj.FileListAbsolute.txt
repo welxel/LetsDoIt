@@ -1,4 +1,3 @@
-C:\Users\dbhsoft\source\repos\LetsDoItWeb\LetsDoItWeb\obj\Debug\netcoreapp3.1\LetsDoItWeb.csprojAssemblyReference.cache
 C:\Users\dbhsoft\source\repos\LetsDoItWeb\LetsDoItWeb\obj\Debug\netcoreapp3.1\LetsDoItWeb.AssemblyInfoInputs.cache
 C:\Users\dbhsoft\source\repos\LetsDoItWeb\LetsDoItWeb\obj\Debug\netcoreapp3.1\LetsDoItWeb.AssemblyInfo.cs
 C:\Users\dbhsoft\source\repos\LetsDoItWeb\LetsDoItWeb\obj\Debug\netcoreapp3.1\LetsDoItWeb.csproj.CoreCompileInputs.cache
@@ -155,8 +154,6 @@ C:\Users\dbhsoft\source\repos\LetsDoItWeb\LetsDoItWeb\bin\Debug\netcoreapp3.1\Ap
 C:\Users\dbhsoft\source\repos\LetsDoItWeb\LetsDoItWeb\bin\Debug\netcoreapp3.1\DataAccess.pdb
 C:\Users\dbhsoft\source\repos\LetsDoItWeb\LetsDoItWeb\bin\Debug\netcoreapp3.1\Entities.pdb
 C:\Users\dbhsoft\source\repos\LetsDoItWeb\LetsDoItWeb\obj\Debug\netcoreapp3.1\staticwebassets\LetsDoItWeb.StaticWebAssets.Manifest.cache
-C:\Users\dbhsoft\source\repos\LetsDoItWeb\LetsDoItWeb\obj\Debug\netcoreapp3.1\staticwebassets\LetsDoItWeb.StaticWebAssets.xml
-C:\Users\dbhsoft\source\repos\LetsDoItWeb\LetsDoItWeb\obj\Debug\netcoreapp3.1\scopedcss\bundle\LetsDoItWeb.styles.css
 C:\Users\dbhsoft\source\repos\LetsDoItWeb\LetsDoItWeb\obj\Debug\netcoreapp3.1\LetsDoItWeb.TagHelpers.input.cache
 C:\Users\dbhsoft\source\repos\LetsDoItWeb\LetsDoItWeb\obj\Debug\netcoreapp3.1\LetsDoItWeb.TagHelpers.output.cache
 C:\Users\dbhsoft\source\repos\LetsDoItWeb\LetsDoItWeb\obj\Debug\netcoreapp3.1\LetsDoItWeb.RazorCoreGenerate.cache
@@ -184,3 +181,6 @@ C:\Users\dbhsoft\source\repos\LetsDoItWeb\LetsDoItWeb\obj\Debug\netcoreapp3.1\Le
 C:\Users\dbhsoft\source\repos\LetsDoItWeb\LetsDoItWeb\obj\Debug\netcoreapp3.1\LetsDoItWeb.dll
 C:\Users\dbhsoft\source\repos\LetsDoItWeb\LetsDoItWeb\obj\Debug\netcoreapp3.1\LetsDoItWeb.pdb
 C:\Users\dbhsoft\source\repos\LetsDoItWeb\LetsDoItWeb\obj\Debug\netcoreapp3.1\LetsDoItWeb.genruntimeconfig.cache
+C:\Users\dbhsoft\source\repos\LetsDoItWeb\LetsDoItWeb\obj\Debug\netcoreapp3.1\LetsDoItWeb.csprojAssemblyReference.cache
+C:\Users\dbhsoft\source\repos\LetsDoItWeb\LetsDoItWeb\obj\Debug\netcoreapp3.1\staticwebassets\LetsDoItWeb.StaticWebAssets.xml
+C:\Users\dbhsoft\source\repos\LetsDoItWeb\LetsDoItWeb\obj\Debug\netcoreapp3.1\scopedcss\bundle\LetsDoItWeb.styles.css

@@ -46,11 +46,18 @@ namespace DoItWebApi {
             services.AddScoped<ICityService, CityService>();
             services.AddScoped<TownRepositoryBase, TownRepository>();
             services.AddScoped<ITownService, TownService>();
-        
 
-            services.AddCors(c => { c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin()); });
+            services.AddScoped<UserFriendRepositoryBase, UserFriendRepository>();
+            services.AddScoped<IUserFriendService, UserFriendService>();
+
+
+            services.AddControllersWithViews()
+    .AddNewtonsoftJson(options =>
+    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+);
+
             var appSettingsSection = Configuration.GetSection("AppSettings");
-
+            services.AddCors(c => c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod()));
             services.Configure<AppSettings>(appSettingsSection);
             var appSettings = appSettingsSection.Get<AppSettings>();
             var key = Encoding.ASCII.GetBytes(appSettings.Secret);
@@ -79,7 +86,7 @@ namespace DoItWebApi {
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseCors(x => x.AllowAnyOrigin().AllowAnyHeader());
+            app.UseCors(options => options.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
             app.UseHttpsRedirection();
          
             app.UseCors(x => x
